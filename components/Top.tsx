@@ -4,24 +4,26 @@ import React from "react";
 const Top: NextPage = () => {
   return (
     <div className="flex flex-col items-center w-full h-240">
+      <div className="w-11/12 h-[500px] bg-sky-500 my-4">image</div>
+
       <span className="my-4 text-4xl text-center">
         はじめまして
         <br />
-        そしまるです！
+        ぼくはそしまるなのだ
       </span>
 
-      <div className="w-11/12 h-[500px] bg-sky-500 my-4">image</div>
-
-      <div className="w-11/12 text-center text-lg my-4">
-        ぼく、そしまる！
+      <div className="w-11/12 text-center  my-4">
+        ぼくの名前はそしまるというのだ
         <br />
-        シャーレの星からやってきたカワウソの妖精だよ
+        シャーレの星からやってきたカワウソの妖精なのだ
         <br />
-        1年前シャーレに乾燥剤を入れられて召喚されたらしいんだけどよくわからないんだ
+        1年前シャーレに抗菌剤ディスクを入れるべきところに
+        <br />
+        乾燥剤を入れられて召喚されたらしいんだけどよくわからないのだ…
         <br />
         みんなに大事なお知らせがあるんだけれど
         <br />
-        はじめにぼくの自己紹介するね！
+        はじめにぼくの自己紹介をするのだ
       </div>
 
       <table className="w-11/12 my-4">
@@ -52,11 +54,11 @@ const Top: NextPage = () => {
           </tr>
           <tr className="border-b-2 border-black border-dashed border-collapse">
             <td className="text-center">得意なこと</td>
-            <td className="text-center">性ホルモン、肝臓の口頭試問</td>
+            <td className="text-center">性ホルモン(?)、ピアノ</td>
           </tr>
           <tr className="border-b-2 border-black border-dashed border-collapse">
             <td className="text-center">苦手なこと</td>
-            <td className="text-center">異物巨細胞の同定、部屋の掃除</td>
+            <td className="text-center">異物巨細胞の同定</td>
           </tr>
           <tr className="border-b-2 border-black border-dashed border-collapse">
             <td className="text-center">愛読書</td>
@@ -66,11 +68,11 @@ const Top: NextPage = () => {
       </table>
 
       <div className="my-4 w-11/12">
-        本日、ぼっち会グループLINEに新機能が追加されました！
+        本日、ぼっち会グループLINEに新機能が追加されたのだ！
         <br />
         今まではぼっち会ドライブに上げたファイルは上げた本人がグループに伝えないと通知できなかったけど
         <br />
-        今日からドライブに新しく上がったファイルはみんなに代わってぼくがぼっち会グループに自動的に通知するよ！
+        今日からドライブに新しく上がったファイルはみんなに代わってぼくがぼっち会グループに自動的に通知するのだ！
       </div>
     </div>
   );

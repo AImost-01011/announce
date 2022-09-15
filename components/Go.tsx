@@ -8,9 +8,9 @@ const Go: NextPage = () => {
   return (
     <div className="m-4 flex flex-col items-center">
       <div className="text-lg">
-        使い方はわかったかな？
+        使い方はわかったのだ？
         <br />
-        それじゃあ一回試しにファイルをアップロードして通知されるかチェックしてみよう！
+        それじゃあ一回試しにファイルをアップロードして通知されるかチェックしてみるのだ！
       </div>
 
       <Link
@@ -22,7 +22,9 @@ const Go: NextPage = () => {
         </div>
       </Link>
 
-      <div className="text-sm animate-pulse">上のアイコンをタップしよう！</div>
+      <div className="text-sm animate-pulse">
+        上のアイコンをタップするのだ！
+      </div>
     </div>
   );
 };

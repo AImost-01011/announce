@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import pcImg from "../public/pc.png";
 import phoneImg from "../public/phone.png";
@@ -8,11 +8,26 @@ import docuImg from "../public/document.png";
 
 const Desc: NextPage = () => {
   const [isSoshi, setIsSoshi] = useState(false);
-  const [deviceCon, setDeviceCon] = useState("translate-y-[-10%] opacity-0");
-  const [docuCon, setDocuCon] = useState("translate-y-[-10%] opacity-0");
-  const [driveCon, setDriveCon] = useState("translate-y-[-10%] opacity-0");
-  const [soshiCon, setSoshiCon] = useState("translate-y-[-100px] opacity-0");
-  const [lineCon, setLineCon] = useState("translate-y-[0px] opacity-0");
+  const [deviceCon, setDeviceCon] = useState<React.CSSProperties>({
+    transform: "translate(-50%, -10%)",
+    opacity: 0,
+  });
+  const [docuCon, setDocuCon] = useState<React.CSSProperties>({
+    transform: "translate(-50%, -10%)",
+    opacity: 0,
+  });
+  const [driveCon, setDriveCon] = useState<React.CSSProperties>({
+    transform: "translate(-50%, -10%)",
+    opacity: 0,
+  });
+  const [soshiCon, setSoshiCon] = useState<React.CSSProperties>({
+    transform: "translate(-10%, -50%)",
+    opacity: 0,
+  });
+  const [lineCon, setLineCon] = useState<React.CSSProperties>({
+    translate: "translate(-50%, 0)",
+    opacity: 0,
+  });
   const [messageCon, setMessageCon] = useState("bottom-[-200px]");
   const [descCon, setDescCon] = useState({
     0: "translate-y-[50%]",
@@ -24,13 +39,16 @@ const Desc: NextPage = () => {
   const getScroll = () => {
     const scrolly = window.scrollY;
 
+    const viewHeight = window.innerHeight;
+
     if (scrolly > 700) setIsSoshi(true);
     else setIsSoshi(false);
 
     switch (true) {
       case scrolly < 1000:
-        setDeviceCon("translate-y-[-10%] opacity-0");
-        setDocuCon("translate-y-[-10%] opacity-0");
+        setDeviceCon({ transform: "translate(-50%, -10%)", opacity: 0 });
+        setDocuCon({ transform: "translate(-50%, -10%)", opacity: 0 });
+
         setDescCon((prevState) => {
           prevState[0] = "translate-y-[50%]";
           prevState[1] = "translate-y-[200px]";
@@ -39,9 +57,10 @@ const Desc: NextPage = () => {
         break;
 
       case scrolly < 1200:
-        setDeviceCon("translate-y-[-50%]");
-        setDocuCon("translate-y-[-50%]");
-        setDriveCon("translate-y-[-10%] opacity-0");
+        setDeviceCon({ transform: "translate(-50%, -50%)" });
+        setDocuCon({ transform: "translate(-50%,-50%)" });
+        setDriveCon({ transform: "translate(-50%, -10%)", opacity: 0 });
+
         setDescCon((prevState) => {
           prevState[0] = "translate-y-[-200px]";
           prevState[1] = "translate-y-[50%]";
@@ -51,17 +70,21 @@ const Desc: NextPage = () => {
         break;
 
       case scrolly < 1400:
-        setDeviceCon("translate-y-[-300px]");
-        setDocuCon("translate-y-[-290px]");
-        setDriveCon("translate-y-[-100px]");
+        setDeviceCon({ transform: `translate(-50%, -${viewHeight * 0.3}px)` });
+        setDocuCon({
+          transform: `translate(-50%, -${viewHeight * 0.3 - 10}px)`,
+        });
+        setDriveCon({ transform: "translate(-50%, -50%)" });
+
         break;
 
       case scrolly < 1600:
-        setDeviceCon("translate-y-[-300px]");
-        setDocuCon("translate-y-[-120px] translate-x-[-20%]");
-        setDriveCon("translate-y-[-100px]");
-        setSoshiCon("translate-y-[-100px] opacity-0");
-        setLineCon("translate-y-[0px] opacity-0");
+        setDeviceCon({ transform: `translate(-50%, -${viewHeight * 0.3}px)` });
+        setDocuCon({ transform: "translate(-20%, calc(-50% - 30px))" });
+        setDriveCon({ transform: "translate(-50%, -50%)" });
+        setSoshiCon({ transform: "translate(-10%, -50%)", opacity: 0 });
+        setLineCon({ translate: "translate(-50%, 0)", opacity: 0 });
+
         setDescCon((prevState) => {
           prevState[1] = "translate-y-[-200px]";
           prevState[2] = "translate-y-[50%]";
@@ -71,17 +94,30 @@ const Desc: NextPage = () => {
         break;
 
       case scrolly < 1800:
-        setDeviceCon("translate-y-[-350px] opacity-0");
-        setDocuCon("translate-y-[-320px] translate-x-[-20%]");
-        setDriveCon("translate-y-[-300px]");
-        setSoshiCon("translate-y-[-260px]");
-        setLineCon("translate-y-[-100px]");
+        setDeviceCon({
+          transform: `translate(-50%, -${viewHeight * 0.8}px)`,
+          opacity: 0,
+        });
+        setDocuCon({
+          transform: `translate(-20%, -${viewHeight * 0.3 + 30}px)`,
+        });
+        setDriveCon({ transform: `translate(-50%, -${viewHeight * 0.3}px)` });
+        setSoshiCon({
+          transform: `translate(-10%, -${viewHeight * 0.3 - 40}px)`,
+        });
+        setLineCon({ transform: `translate(-50%, -${viewHeight * 0.1}px)` });
+
         setMessageCon("bottom-[-200px]");
         break;
 
       case scrolly < 2000:
-        setSoshiCon("translate-y-[-10px] opacity-0");
-        setLineCon("translate-y-[-100px]");
+        setSoshiCon({ transform: "translate(-10%, -10px)", opacity: 0 });
+        setLineCon({ transform: `translate(-50%, -${viewHeight * 0.1}px)` });
+        setDocuCon({
+          transform: `translate(-20%, -${viewHeight * 0.3 + 30}px)`,
+        });
+        setDriveCon({ transform: `translate(-50%, -${viewHeight * 0.3}px)` });
+
         setMessageCon("bottom-2");
         setDescCon((prevState) => {
           prevState[2] = "translate-y-[-200px]";
@@ -91,9 +127,19 @@ const Desc: NextPage = () => {
         break;
 
       default:
-        setDocuCon("translate-y-[-340px] translate-x-[-20%] opacity-0");
-        setDriveCon("translate-y-[-320px] opacity-0");
-        setLineCon("translate-y-[-120px] opacity-0");
+        setDocuCon({
+          transform: `translate(-20%, -${viewHeight * 0.4}px)`,
+          opacity: 0,
+        });
+        setDriveCon({
+          transform: `translate(-50%, -${viewHeight * 0.4}px)`,
+          opacity: 0,
+        });
+        setLineCon({
+          transform: `translate(-50%, -${viewHeight * 0.2}px)`,
+          opacity: 0,
+        });
+
         setMessageCon("bottom-4 opacity-0");
         setIsSoshi(false);
         setDescCon((prevState) => {
@@ -116,7 +162,8 @@ const Desc: NextPage = () => {
   return (
     <div className="w-full h-[1400px] relative">
       <div
-        className={`fixed left-1/2 top-1/2 translate-x-[-50%]  h-16 flex flex-row justify-around w-[240px] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${deviceCon}`}
+        className={`fixed left-1/2 top-1/2 translate-x-[-50%]  h-16 flex flex-row justify-around w-[240px] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
+        style={deviceCon}
       >
         <div className="h-16 w-16 relative">
           <Image
@@ -138,7 +185,8 @@ const Desc: NextPage = () => {
       </div>
 
       <div
-        className={`h-12 w-12 fixed left-1/2 top-1/2 translate-x-[-50%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${docuCon}`}
+        className={`h-12 w-12 fixed left-1/2 top-1/2 translate-x-[-50%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
+        style={docuCon}
       >
         <Image
           src={docuImg}
@@ -149,7 +197,8 @@ const Desc: NextPage = () => {
       </div>
 
       <div
-        className={`fixed left-1/2 top-1/2 translate-x-[-50%] w-16 h-16 duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${driveCon}`}
+        className={`fixed left-1/2 top-1/2 translate-x-[-50%] w-16 h-16 duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
+        style={driveCon}
       >
         <Image
           src={driveImg}
@@ -160,11 +209,13 @@ const Desc: NextPage = () => {
       </div>
 
       <div
-        className={`w-10 h-10 bg-sky-500 rounded-full fixed top-1/2 left-1/2 translate-x-[-20%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${soshiCon}`}
+        className={`w-10 h-10 bg-sky-500 rounded-full fixed top-1/2 left-1/2 translate-x-[-20%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
+        style={soshiCon}
       />
 
       <div
-        className={`w-11/12 h-[300px] bg-slate-200 rounded fixed top-1/2 left-1/2 translate-x-[-50%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${lineCon}`}
+        className={`w-11/12 h-[300px] bg-slate-200 rounded fixed top-1/2 left-1/2 translate-x-[-50%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
+        style={lineCon}
       >
         <div className="relative w-full h-full overflow-hidden">
           <div className="p-2">
@@ -176,7 +227,7 @@ const Desc: NextPage = () => {
             <div className="w-10 h-8 bg-sky-500 rounded-full mr-2 " />
 
             <div className="rounded bg-white grow p-1 text-sm">
-              新しいファイルがGoogle Driveにアップロードされました！
+              新しいファイルがGoogle Driveにアップロードされたのだ！
               <br />
               <br />
               ====追加されたファイル====
@@ -199,22 +250,22 @@ const Desc: NextPage = () => {
           <div
             className={`absolute bottom-1/2 left-1/2 translate-x-[-50%] w-11/12 text-center duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${descCon[0]}`}
           >
-            それじゃあ説明を始めるよ
+            それじゃあ説明を始めるのだ
           </div>
           <div
             className={`absolute bottom-1/2 left-1/2 translate-x-[-50%] translate-y-[50%] w-11/12 text-center duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${descCon[1]}`}
           >
-            自分のデバイスに「乾燥剤学　シケタイ」というデータがあるとするよ
+            自分のデバイスに「乾燥剤学　シケタイ」というデータがあるとするのだ
           </div>
           <div
             className={`absolute bottom-1/2 left-1/2 translate-x-[-50%] translate-y-[50%] w-11/12 text-center duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${descCon[2]}`}
           >
-            そのデータをぼっち会ドライブにアップロードすると...
+            そのデータをぼっち会ドライブにアップロードすると…
           </div>
           <div
             className={`absolute bottom-1/2 left-1/2 translate-x-[-50%] translate-y-[50%] w-11/12 text-center duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${descCon[3]}`}
           >
-            ぼくがぼっち会ドライブを定期的にチェックしてぼっち会グループに自動的に通知するよ！
+            ぼくがぼっち会ドライブを定期的にチェックしてぼっち会グループに自動的に通知するのだ！
           </div>
         </div>
       </div>
