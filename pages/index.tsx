@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       (navigator.userAgent.indexOf("Android") > 0 &&
         navigator.userAgent.indexOf("Mobile") > 0)
     ) {
-      // スマートフォン向けの記述
+      // スマートフォン向けの記
     } else {
       Router.push("/except");
     }
