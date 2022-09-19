@@ -25,6 +25,11 @@ const Go: NextPage = () => {
       <div className="text-sm animate-pulse">
         上のアイコンをタップするのだ！
       </div>
+
+      <div>
+        <br />
+        <span className="text-xs">Special Thanks: ゆうき(イラスト)</span>
+      </div>
     </div>
   );
 };

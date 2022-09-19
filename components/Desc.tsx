@@ -5,6 +5,7 @@ import pcImg from "../public/pc.png";
 import phoneImg from "../public/phone.png";
 import driveImg from "../public/drive.png";
 import docuImg from "../public/document.png";
+import soshiIcon from "../public/soshiIcon.png";
 
 const Desc: NextPage = () => {
   const [isSoshi, setIsSoshi] = useState(false);
@@ -209,9 +210,16 @@ const Desc: NextPage = () => {
       </div>
 
       <div
-        className={`w-10 h-10 bg-sky-500 rounded-full fixed top-1/2 left-1/2 translate-x-[-20%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
+        className={`w-10 h-10 bg-lime-200 rounded-full fixed top-1/2 left-1/2 translate-x-[-20%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
         style={soshiCon}
-      />
+      >
+        <Image
+          src={soshiIcon}
+          alt="soshi icon"
+          layout="fill"
+          objectFit="contain"
+        />
+      </div>
 
       <div
         className={`w-11/12 h-[300px] bg-slate-200 rounded fixed top-1/2 left-1/2 translate-x-[-50%] duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]`}
@@ -224,7 +232,14 @@ const Desc: NextPage = () => {
           <div
             className={`flex flex-row absolute left-1/2 translate-x-[-50%] w-11/12 duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${messageCon}`}
           >
-            <div className="w-10 h-8 bg-sky-500 rounded-full mr-2 " />
+            <div className="w-10 h-8 bg-lime-200 rounded-full mr-2 relative">
+              <Image
+                src={soshiIcon}
+                alt="soshi icon"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
 
             <div className="rounded bg-white grow p-1 text-sm">
               新しいファイルがGoogle Driveにアップロードされたのだ！
@@ -245,8 +260,15 @@ const Desc: NextPage = () => {
           isSoshi ? "bottom-4" : "bottom-[-200px]"
         }`}
       >
-        <div className="rounded-full bg-sky-500 w-12 h-12 mr-2" />
-        <div className="rounded bg-slate-200 h-24 grow relative overflow-hidden">
+        <div className="rounded-full bg-lime-200 w-12 h-12 mr-2 relative">
+          <Image
+            src={soshiIcon}
+            alt="soshi icon"
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
+        <div className="rounded bg-lime-100 h-24 grow relative overflow-hidden">
           <div
             className={`absolute bottom-1/2 left-1/2 translate-x-[-50%] w-11/12 text-center duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${descCon[0]}`}
           >

@@ -1,25 +1,36 @@
 import { NextPage } from "next";
 import React from "react";
+import Image from "next/image";
+import soshiImg from "../public/soshi.png";
 
 const Top: NextPage = () => {
   return (
     <div className="flex flex-col items-center w-full h-240">
-      <div className="w-11/12 h-[500px] bg-sky-500 my-4">image</div>
+      <div className="w-11/12 h-[400px] bg-lime-400 my-4 relative rounded overflow-hidden">
+        <Image
+          src={soshiImg}
+          alt="new character soshimaru"
+          layout="fill"
+          objectFit="contain"
+        />
+      </div>
 
-      <span className="my-4 text-4xl text-center">
+      <span className="my-4 text-3xl text-center">
         はじめまして
         <br />
         ぼくはそしまるなのだ
       </span>
 
-      <div className="w-11/12 text-center  my-4">
+      <div className="w-11/12 text-center my-4">
         ぼくの名前はそしまるというのだ
         <br />
         シャーレの星からやってきたカワウソの妖精なのだ
         <br />
-        1年前シャーレに抗菌剤ディスクを入れるべきところに
+        1年前シャーレに抗菌剤ディスクを入れるところに
         <br />
-        乾燥剤を入れられて召喚されたらしいんだけどよくわからないのだ…
+        乾燥剤を入れられて召喚されたらしいんだけど
+        <br />
+        よくわからないのだ…
         <br />
         みんなに大事なお知らせがあるんだけれど
         <br />
