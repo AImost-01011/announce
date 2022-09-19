@@ -1,5 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
+import Image from "next/image";
+import soshiIcon from "../public/soshiIcon.png";
 
 const except: NextPage = () => {
   return (
@@ -10,7 +12,14 @@ const except: NextPage = () => {
         スマートフォンでもう一度アクセスしてください
       </div>
 
-      <div className="w-[200px] h-[200px] rounded-full bg-sky-500"></div>
+      <div className="w-[200px] h-[200px] rounded-full bg-lime-200 relative">
+        <Image
+          src={soshiIcon}
+          alt="soshi icon"
+          layout="fill"
+          objectFit="contain"
+        />
+      </div>
     </div>
   );
 };
